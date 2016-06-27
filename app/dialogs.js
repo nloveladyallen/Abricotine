@@ -49,11 +49,12 @@ var appDialogs = {
         var filename = parsePath(path).basename || path,
             userChoice = dialog.showMessageBox(win, {
                 title: 'Unsaved document',
-                message: 'Do you really want to close \'' + filename + '\' without saving?',
-                buttons: ['Cancel', 'Save & close', 'Close without saving']
+                message: 'Do you really save the changes made to the document “'+ filename +'” without saving?',
+                detail: 'Your changes will be lost if you don\'t save them.',
+                buttons: ['Save', 'Cancel', 'Don\'t Save']
             });
         switch (userChoice) {
-            case 1:
+            case 0:
                 saveFunc(closeFunc);
                 break;
             case 2:
